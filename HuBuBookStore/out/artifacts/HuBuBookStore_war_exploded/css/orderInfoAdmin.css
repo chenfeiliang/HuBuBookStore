@@ -1,0 +1,195 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+.head {
+
+}
+
+#contents {
+    width: 100%;
+    min-height: 420px;
+    background: url(../images/templatemo_content.jpg);
+    float: left;
+}
+
+#c_left {
+    width: 20%;
+    float: left;
+    margin-left: 80px;
+
+}
+
+#type {
+    width: 250px;
+    border: 1px solid blue;
+}
+
+#type ul {
+
+}
+
+#type li {
+    list-style-type: none;
+    text-align: center;
+    margin-top: 10px;
+}
+
+#type a {
+    font-size: 17px;
+    color: whitesmoke;
+    text-decoration: none;
+}
+
+#type a:hover {
+    color: gold;
+}
+
+#typeHead h1 {
+    font-size: 20px;
+    color: white;
+    border-bottom: 1px solid;
+    text-align: center;
+}
+
+#c_center {
+    width: 1300px;
+    float: left;
+    /* margin-left: 30px; */
+    border: 1px solid;
+}
+
+#bookInfo {
+    width: 1300px;
+    float: left;
+    color: black;
+}
+
+.bookImg {
+    width: 280px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    text-align: center;
+}
+
+.bookImg img {
+    width: 210px;
+}
+
+.bookUl {
+    /* width: 300px; */
+    min-height: 380px;
+    float: left;
+    text-align: center;
+    /* border: 1px solid red; */
+    /* margin-left: 30px; */
+    padding-bottom: 20px;
+    padding-top: 20px;
+    color: black;
+
+}
+
+.bookUl a {
+    text-decoration: none;
+}
+
+.bookUl td {
+    padding-bottom: 5px;
+    padding-top: 5px;
+    color: black;
+}
+
+#footer {
+    width: 100%;
+    float: left;
+}
+
+.pageInfo {
+    width: 100%;
+    float: left;
+    text-align: center;
+    color: black;
+    padding-bottom: 20px;
+}
+
+.pageInfo a {
+    text-decoration: none;
+    color: black;
+}
+
+.pageInfo a:hover {
+    text-decoration: none;
+    color: gold;
+}
+
+.pageText {
+    margin-left: 10px;
+    margin-right: 10px;
+    color: black;
+}
+
+.buyText {
+    width: 100%;
+    float: left;
+    text-align: center;
+}
+
+.buyText a {
+    width: 100%;
+    text-decoration: none;
+    border: 1px solid;
+    padding: 5px;
+    color: white;
+    text-aign: center;
+}
+
+.buyText a:hover {
+    color: gold;
+}
+
+.tableHead {
+    min-width: 60px;
+}
+
+.bookName {
+    width: 250px;
+}
+
+.operaTion {
+    width: 200px;
+}
+
+.createTime {
+    width: 250px;
+}
+
+.bookNum {
+    BACKGROUND-COLOR: transparent;
+    border: none;
+    width: 55px;
+    text-align: center;
+    color: black;
+}
+
+.createOfBT {
+    BACKGROUND-COLOR: transparent;
+    border: none;
+    width: 55px;
+    text-align: center;
+    color: #BEA68E;
+    cursor: pointer;
+}
+
+.createOfBT:hover {
+    color: yellow;
+}
+
+.orderId {
+    BACKGROUND-COLOR: transparent;
+    border: none;
+    width: 310px;
+    text-align: center;
+    color: black;
+    font-size: 15px;
+}

@@ -1,0 +1,147 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+.head {
+
+}
+
+#contents {
+    width: 100%;
+    min-height: 502px;
+    background: url(../images/templatemo_content.jpg);
+    float: left;
+}
+
+#c_left {
+    width: 20%;
+    float: left;
+    margin-left: 80px;
+
+}
+
+#type {
+    width: 250px;
+}
+
+#type ul {
+
+}
+
+#type li {
+    list-style-type: none;
+    text-align: center;
+    margin-top: 10px;
+}
+
+#type a {
+    font-size: 17px;
+    color: whitesmoke;
+    text-decoration: none;
+}
+
+#type a:hover {
+    color: gold;
+}
+
+#typeHead h1 {
+    font-size: 20px;
+    color: white;
+    border-bottom: 1px solid;
+    text-align: center;
+}
+
+#c_center {
+    width: 700px;
+    float: left;
+    margin-left: 30px;
+    border: 1px solid;
+}
+
+#bookInfo {
+    width: 700px;
+    float: left;
+}
+
+.bookImg {
+    width: 280px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    text-align: center;
+}
+
+.bookImg img {
+    width: 210px;
+}
+
+.bookUl {
+    width: 300px;
+    min-height: 500px;
+    float: left;
+    margin-left: 30px;
+    padding-bottom: 20px;
+}
+
+#bookInfo ul {
+    width: 300px;
+    min-height: 500px;
+    float: left;
+    padding-bottom: 20px;
+}
+
+#bookInfo ul li {
+    width: 300px;
+    margin-top: 10px;
+    /* border: 1px solid; */
+    list-style-type: none;
+    font-size: 15px;
+    color: white;
+}
+
+#footer {
+    width: 100%;
+    float: left;
+}
+
+.pageInfo {
+    width: 100%;
+    float: left;
+    text-align: center;
+    color: white;
+    padding-bottom: 20px;
+}
+
+.pageInfo a {
+    text-decoration: none;
+    color: white;
+}
+
+.pageInfo a:hover {
+    text-decoration: none;
+    color: gold;
+}
+
+.pageText {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.buyText {
+    width: 100%;
+    float: left;
+    text-align: center;
+}
+
+.buyText a {
+    width: 100%;
+    text-decoration: none;
+    border: 1px solid;
+    padding: 5px;
+    color: white;
+    text-aign: center;
+}
+
+.buyText a:hover {
+    color: gold;
+}

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:context="http://www.springframework.org/schema/context"
+    xmlns:tx="http://www.springframework.org/schema/tx"
+    xmlns:aop="http://www.springframework.org/schema/aop"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/aop
+        http://www.springframework.org/schema/aop/spring-aop.xsd
+        http://www.springframework.org/schema/tx    
+        http://www.springframework.org/schema/tx/spring-tx.xsd  
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd">
+
+	<context:annotation-config/>   <!--打开处理器-->
+	<context:component-scan base-package="com.cfl"/>
+
+    <!--引入hibernate配置文件-->
+    <import resource="classpath*:spring-hibernate.xml" />
+
+    <!-- Configure the transaction manager -->
+    <!-- 定义txManager 管理事务 注入sessionFactory -->
+    <bean id="txManager" class="org.springframework.orm.hibernate5.HibernateTransactionManager">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+
+    <!-- xml方式-->
+    <!--定义建议集  ， 在切入点集合的方法中加事务并且定义其中各类方法的事务属性 如 ： propagation ，read-only  -->
+    	<tx:advice id = "txAdvice"  transaction-manager="txManager">
+               <!-- 配置详细事务处理语义-->
+                <tx:attributes>
+                    <tx:method name="get*" read-only="true" rollback-for="Exception"/>
+                    <tx:method name="*" propagation="REQUIRED" rollback-for="Exception"/>
+                </tx:attributes>
+        </tx:advice>
+
+
+     <!-- Spring aop事务管理 -->
+     <aop:config>
+            <!--定义切入点集合,在哪个类，什么方法切入 配置切入点-->
+            <aop:pointcut id="servicePointCut" expression="execution(public * com.cfl.service.*.*(..))" />
+
+            <aop:pointcut id="daoPointCut" expression="execution(public * com.cfl.dao.*.*(..))" />
+
+            <!--指定在txAdvice切入点应用txAdvice事务增强处理-->
+            <aop:advisor advice-ref="txAdvice" pointcut-ref="servicePointCut"/>
+
+            <!--指定在txAdvice切入点应用txAdvice事务增强处理-->
+            <aop:advisor advice-ref="txAdvice" pointcut-ref="daoPointCut"/>
+
+      </aop:config>
+
+</beans>
+

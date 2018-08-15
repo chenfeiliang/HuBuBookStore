@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.5//EN"
+        "http://struts.apache.org/dtds/struts-2.5.dtd">
+
+<struts>
+
+    <constant name="struts.devMode" value="true"/>
+
+    <package name="admin" namespace="/admin" extends="struts-default">
+
+        <default-action-ref name="index"></default-action-ref>
+
+        <global-allowed-methods>regex:.*</global-allowed-methods>
+
+        <action name="index">
+            <result>
+                /admin/index.jsp
+            </result>
+        </action>
+
+        <!-- 文件上传  upload_*_*   第一个* 表示模块名    第二个*表示需要文件上传的操作    例如 upload_Book_add 添加书籍  需要上传图片-->
+        <action name="upload_*_*" class="com.cfl.action.{1}Action" method="{2}">
+	       <!-- 通过param参数设置保存目录的路径 -->
+	       <param name="savePath">/files</param>
+           <result name="success" type="chain">Book_list</result> 
+        </action>
+        
+        <!--*_* 第一个*表示模块  第二个*表示操作  如 Book_addInput  Book_add  Categoty_updateInput  Categoty_update -->
+        <action name="*_*" class="com.cfl.action.{1}Action" method="{2}">
+              
+            <result name="input">
+                /admin/{1}_{2}.jsp
+            </result>
+            
+            <result name="success" type="chain">
+                {1}_list
+            </result>
+        </action>
+
+    </package>
+
+</struts>

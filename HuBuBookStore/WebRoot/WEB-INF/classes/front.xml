@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.5//EN"
+        "http://struts.apache.org/dtds/struts-2.5.dtd">
+
+<struts>
+
+    <constant name="struts.devMode" value="true"/>
+    
+    <package name="front" namespace="/front" extends="struts-default">
+
+        <!--默认跳转index Action-->
+        <default-action-ref name="index"></default-action-ref>
+
+        <global-allowed-methods>regex:.*</global-allowed-methods>
+        
+        <!--前台主页-->
+        <action name="index" class="com.cfl.action.ClientAction" method = "list">
+            <result>
+                /front/index.jsp
+            </result>
+        </action>
+        
+        <!--前台主页 分类查找-->
+        <action name="Client_showByCategory" class="com.cfl.action.ClientAction" method = "showByCategory">
+            <result >
+                /front/index.jsp
+            </result>
+        </action>
+ 
+ 		<!-- 前台订单模块 -->
+          <action name="Client_*OrderInfo" class="com.cfl.action.ClientAction" method = "{1}OrderInfo">
+            <result type = "chain">
+            		Client_showOrderInfo
+            </result>
+            
+            <result name="input">
+                /front/orderInfo.jsp
+            </result>
+            
+            <result name = "error">
+                /front/loginInput.jsp
+            </result>
+        </action> 
+        
+        <!-- 前台订单模块 -->
+         <action name="Client_*ShopCart" class="com.cfl.action.ClientAction" method = "{1}ShopCart">
+            <result type = "chain">
+            		Client_showShopCart  
+            </result>
+            
+            <result name="input">
+                /front/shopCart.jsp
+            </result>
+            
+            <result name = "error">
+                /front/loginInput.jsp
+            </result>
+        </action>       
+        
+       <!--  登录与注册 login loginInput   register registerInput -->
+       
+        <action name="*_*" class="com.cfl.action.{1}Action" method="{2}">        
+           
+            <result name = "input">
+                /front/{2}.jsp
+            </result>
+            
+            <!--操作成功时跳转Action-->
+            <result name = "toAction" type="chain">
+                ${goToUrl}
+            </result>
+ 
+ 			<!--操作成功时跳转JSP-->
+             <result>
+                ${goToUrl}
+            </result>           
+            
+            <!--操作错误时跳转的JSP-->
+             <result name = "error">
+                ${goToUrl}
+            </result>
+        </action>
+
+    </package>
+
+</struts>

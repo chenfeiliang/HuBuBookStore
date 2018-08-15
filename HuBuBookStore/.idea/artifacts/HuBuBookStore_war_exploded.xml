@@ -1,0 +1,17 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="HuBuBookStore:war exploded">
+    <output-path>$PROJECT_DIR$/out/artifacts/HuBuBookStore_war_exploded</output-path>
+    <root id="root">
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="HuBuBookStore" />
+        </element>
+        <element id="directory" name="lib">
+          <element id="library" level="module" name="commons-pool-1.5.6.jar" module-name="HuBuBookStore" />
+          <element id="library" level="module" name="commons-dbcp-1.4.jar" module-name="HuBuBookStore" />
+        </element>
+      </element>
+      <element id="javaee-facet-resources" facet="HuBuBookStore/web/Web" />
+    </root>
+  </artifact>
+</component>

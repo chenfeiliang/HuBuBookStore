@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!--定义数据源-->
+	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource"
+		  destroy-method="close">
+		<property name="driverClass" value="com.mysql.jdbc.Driver"/>
+		<!--<property name="jdbcUrl" value="jdbc:mysql://localhost:3306/testshopping" />-->
+		<property name="jdbcUrl"
+				  value="jdbc:mysql://localhost:3306/test?useSSL=false&amp;characterEncoding=utf-8&amp;autoReconnect=true"/>
+		<!--<property name="jdbcUrl"-->
+		<!--value="jdbc:mysql://120.79.91.130:3306/sdxs?useSSL=false&amp;characterEncoding=utf-8&amp;autoReconnect=true"/>-->
+		<property name="user" value="root"/>
+		<!--<property name="password" value="JSCJSC" />-->
+		<property name="password" value="root"/>
+		<!-- Request timeout -->
+		<property name="checkoutTimeout" value="30000"/>
+		<!-- Checks for free connections in all connection pools every 60 seconds.
+        Defaults:0,Do not check-->
+		<property name="idleConnectionTestPeriod" value="30"/>
+		<!-- Connection database connection pool maximum idle time -->
+		<property name="maxIdleTime" value="30"/>
+		<!-- Connection pool Initialize the connection count -->
+		<property name="initialPoolSize" value="5"/>
+		<property name="minPoolSize" value="5"/>
+		<property name="maxPoolSize" value="20"/>
+		<!--When the connection pool is exhausted,the number of c3p0 obtain connections at the same time.
+        Defaults:3 -->
+		<property name="acquireIncrement" value="5"/>
+	</bean>
+
+    <!--定义hibernateTemplate-->
+    <bean id="hibernateTemplate" class="org.springframework.orm.hibernate5.HibernateTemplate">
+            <property name="sessionFactory" ref="sessionFactory"></property>
+    </bean>
+
+    <!--配置sessionFactory-->
+    <bean id="sessionFactory" class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">
+        <property name="dataSource" ref="dataSource"/>
+
+        <property name="packagesToScan">
+            <list>
+                <value>com.cfl.domain</value>
+            </list>
+
+        </property>
+
+    <property name="hibernateProperties">
+            <props>
+                <prop key="hibernate.dialect">org.hibernate.dialect.MySQL5InnoDBDialect</prop>
+                <prop key="hibernate.format_sql">false</prop>
+                <prop key="hibernate.show_sql">true</prop>
+                <prop key="hibernate.hbm2ddl.auto">update</prop>
+                <prop key="hibernate.temp.use_jdbc_metadata_defaults">false</prop>
+            </props>
+        </property>
+    </bean>
+
+</beans>
+
